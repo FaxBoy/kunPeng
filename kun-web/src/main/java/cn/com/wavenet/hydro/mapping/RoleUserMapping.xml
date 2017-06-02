@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.wavenet.hydro.dao.RoleUserDao" >
+  <resultMap id="BaseResultMap" type="cn.com.wavenet.hydro.pojo.RoleUser" >
+    <id column="CD_USRL" property="cdUsrl" jdbcType="VARCHAR" />
+    <result column="CD_RL" property="cdRl" jdbcType="VARCHAR" />
+    <result column="CD_US" property="cdUs" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CD_USRL, CD_RL, CD_US
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from WT_SYS_ROLEUSER
+    where CD_USRL = #{cdUsrl,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WT_SYS_ROLEUSER
+    where CD_USRL = #{cdUsrl,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="cn.com.wavenet.hydro.pojo.RoleUser" >
+    insert into WT_SYS_ROLEUSER (CD_USRL, CD_RL, CD_US
+      )
+    values (#{cdUsrl,jdbcType=VARCHAR}, #{cdRl,jdbcType=VARCHAR}, #{cdUs,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.wavenet.hydro.pojo.RoleUser" >
+    insert into WT_SYS_ROLEUSER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cdUsrl != null" >
+        CD_USRL,
+      </if>
+      <if test="cdRl != null" >
+        CD_RL,
+      </if>
+      <if test="cdUs != null" >
+        CD_US,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cdUsrl != null" >
+        #{cdUsrl,jdbcType=VARCHAR},
+      </if>
+      <if test="cdRl != null" >
+        #{cdRl,jdbcType=VARCHAR},
+      </if>
+      <if test="cdUs != null" >
+        #{cdUs,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+ 
+  <update id="updateByExampleSelective" parameterType="map" >
+    update WT_SYS_ROLEUSER
+    <set >
+      <if test="record.cdUsrl != null" >
+        CD_USRL = #{record.cdUsrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdRl != null" >
+        CD_RL = #{record.cdRl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdUs != null" >
+        CD_US = #{record.cdUs,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update WT_SYS_ROLEUSER
+    set CD_USRL = #{record.cdUsrl,jdbcType=VARCHAR},
+      CD_RL = #{record.cdRl,jdbcType=VARCHAR},
+      CD_US = #{record.cdUs,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.wavenet.hydro.pojo.RoleUser" >
+    update WT_SYS_ROLEUSER
+    <set >
+      <if test="cdRl != null" >
+        CD_RL = #{cdRl,jdbcType=VARCHAR},
+      </if>
+      <if test="cdUs != null" >
+        CD_US = #{cdUs,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CD_USRL = #{cdUsrl,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.wavenet.hydro.pojo.RoleUser" >
+    update WT_SYS_ROLEUSER
+    set CD_RL = #{cdRl,jdbcType=VARCHAR},
+      CD_US = #{cdUs,jdbcType=VARCHAR}
+    where CD_USRL = #{cdUsrl,jdbcType=VARCHAR}
+  </update>
+</mapper>

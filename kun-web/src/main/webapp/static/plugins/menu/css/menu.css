@@ -1,0 +1,62 @@
+.treeview-heder{
+    background:#1D6AC6;
+    color: #EEEEEE;
+    height:36px;
+    text-align: center;
+    line-height: 36px;
+    border-radius: 0 0 5px 5px;
+    font-weight: bold;
+}
+.treeview ul:first-child{
+    display: block;
+}
+.treeview-menu >li{
+    background:#FFFFFF;
+    /*border-bottom: 1px #DDDDDD solid;*/
+
+}
+.treeview-menu{
+    display: none;
+}
+.treeview-menu >li > a {
+    padding: 10px 5px 10px 20px;
+    display: block;
+    color:#2F5071;
+    text-decoration:none;
+}
+.treeview-menu >li > a > i{
+    color:#F7B05B;
+   /* background:#61AFFF;
+    padding:2px;
+    border-radius: 50%;*/
+    margin-right: 5px;
+}
+.fa-at{
+    font-size: 15px;
+}
+.sidebar-menu > li > a:hover,.sidebar-menu > li.active a,
+.treeview-menu >li:hover,.treeview-menu >li:hover a,.treeview-menu >li:hover a i,
+.treeview-menu >li.active,.treeview-menu >li.active a,.treeview-menu >li.active a i{
+    background: #069DD5;
+    color:#FFFFFF;
+    font-weight: 500;
+}
+.sidebar-menu > li{
+    border-bottom: solid 1px #ECF0F5;
+   /* background:#EEEEEE;*/
+}
+.sidebar-menu > li > a {
+    padding: 8px 5px 8px 10px;
+    display: block;
+    color:#1A2C3E;
+    font-size: 15px;
+    text-decoration:none;
+   /* border-bottom: 1px #A1A1A1 solid;*/
+}
+
+.sidebar-menu > li > a > i{
+    margin-right: 5px;
+    padding:5px;
+    border-radius: 50%;
+    color: #FFFDF3;
+}

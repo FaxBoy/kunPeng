@@ -1,0 +1,525 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.wavenet.hydro.dao.UsersDao" >
+  <resultMap id="BaseResultMap" type="cn.com.wavenet.hydro.pojo.Users" >
+    <id column="CD_US" property="cdUs" jdbcType="VARCHAR" />
+    <result column="CD_DP" property="cdDp" jdbcType="VARCHAR" />
+    <result column="CD_DT" property="cdDt" jdbcType="VARCHAR" />
+    <result column="ST_LGNM" property="stLgnm" jdbcType="VARCHAR" />
+    <result column="ST_LGPS" property="stLgps" jdbcType="VARCHAR" />
+    <result column="ST_NM" property="stNm" jdbcType="VARCHAR" />
+    <result column="NM_AGE" property="nmAge" jdbcType="DECIMAL" />
+    <result column="DT_BIR" property="dtBir" jdbcType="DATE" />
+    <result column="ST_HTEL" property="stHtel" jdbcType="VARCHAR" />
+    <result column="ST_OTEL" property="stOtel" jdbcType="VARCHAR" />
+    <result column="ST_ATEL" property="stAtel" jdbcType="VARCHAR" />
+    <result column="ST_MTEL" property="stMtel" jdbcType="VARCHAR" />
+    <result column="ST_MSN" property="stMsn" jdbcType="VARCHAR" />
+    <result column="ST_QQ" property="stQq" jdbcType="VARCHAR" />
+    <result column="ST_EMAIL" property="stEmail" jdbcType="VARCHAR" />
+    <result column="ST_IMGPH" property="stImgph" jdbcType="VARCHAR" />
+    <result column="NM_JOBLH" property="nmJoblh" jdbcType="DECIMAL" />
+    <result column="DT_CREATE" property="dtCreate" jdbcType="DATE" />
+    <result column="DT_LG" property="dtLg" jdbcType="DATE" />
+    <result column="DT_BKLG" property="dtBklg" jdbcType="DATE" />
+    <result column="NM_OD" property="nmOd" jdbcType="DECIMAL" />
+    <result column="ST_PCIP" property="stPcip" jdbcType="VARCHAR" />
+    <result column="ST_AREAID" property="stAreaid" jdbcType="VARCHAR" />
+    <result column="ST_ULVL" property="stUlvl" jdbcType="VARCHAR" />
+    <result column="ST_STATUS" property="stStatus" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CD_US, CD_DP, CD_DT, ST_LGNM, ST_LGPS, ST_NM, NM_AGE, DT_BIR, ST_HTEL, ST_OTEL, ST_ATEL, 
+    ST_MTEL, ST_MSN, ST_QQ, ST_EMAIL, ST_IMGPH, NM_JOBLH, DT_CREATE, DT_LG, DT_BKLG, 
+    NM_OD, ST_PCIP, ST_AREAID, ST_ULVL, ST_STATUS
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from WT_SYS_USER
+    where CD_US = #{cdUs,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="findByStLgnm" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from WT_SYS_USER
+    where ST_LGNM = #{stLgnm,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WT_SYS_USER
+    where CD_US = #{cdUs,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="cn.com.wavenet.hydro.pojo.Users" >
+    insert into WT_SYS_USER (CD_US, CD_DP, CD_DT, 
+      ST_LGNM, ST_LGPS, ST_NM, 
+      NM_AGE, DT_BIR, ST_HTEL, 
+      ST_OTEL, ST_ATEL, ST_MTEL, 
+      ST_MSN, ST_QQ, ST_EMAIL, 
+      ST_IMGPH, NM_JOBLH, DT_CREATE, 
+      DT_LG, DT_BKLG, NM_OD, ST_PCIP, 
+      ST_AREAID, ST_ULVL, ST_STATUS
+      )
+    values (#{cdUs,jdbcType=VARCHAR}, #{cdDp,jdbcType=VARCHAR}, #{cdDt,jdbcType=VARCHAR}, 
+      #{stLgnm,jdbcType=VARCHAR}, #{stLgps,jdbcType=VARCHAR}, #{stNm,jdbcType=VARCHAR}, 
+      #{nmAge,jdbcType=DECIMAL}, #{dtBir,jdbcType=DATE}, #{stHtel,jdbcType=VARCHAR}, 
+      #{stOtel,jdbcType=VARCHAR}, #{stAtel,jdbcType=VARCHAR}, #{stMtel,jdbcType=VARCHAR}, 
+      #{stMsn,jdbcType=VARCHAR}, #{stQq,jdbcType=VARCHAR}, #{stEmail,jdbcType=VARCHAR}, 
+      #{stImgph,jdbcType=VARCHAR}, #{nmJoblh,jdbcType=DECIMAL}, #{dtCreate,jdbcType=DATE}, 
+      #{dtLg,jdbcType=DATE}, #{dtBklg,jdbcType=DATE}, #{nmOd,jdbcType=DECIMAL}, #{stPcip,jdbcType=VARCHAR}, 
+      #{stAreaid,jdbcType=VARCHAR}, #{stUlvl,jdbcType=VARCHAR}, #{stStatus,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.wavenet.hydro.pojo.Users" >
+    insert into WT_SYS_USER
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cdUs != null" >
+        CD_US,
+      </if>
+      <if test="cdDp != null" >
+        CD_DP,
+      </if>
+      <if test="cdDt != null" >
+        CD_DT,
+      </if>
+      <if test="stLgnm != null" >
+        ST_LGNM,
+      </if>
+      <if test="stLgps != null" >
+        ST_LGPS,
+      </if>
+      <if test="stNm != null" >
+        ST_NM,
+      </if>
+      <if test="nmAge != null" >
+        NM_AGE,
+      </if>
+      <if test="dtBir != null" >
+        DT_BIR,
+      </if>
+      <if test="stHtel != null" >
+        ST_HTEL,
+      </if>
+      <if test="stOtel != null" >
+        ST_OTEL,
+      </if>
+      <if test="stAtel != null" >
+        ST_ATEL,
+      </if>
+      <if test="stMtel != null" >
+        ST_MTEL,
+      </if>
+      <if test="stMsn != null" >
+        ST_MSN,
+      </if>
+      <if test="stQq != null" >
+        ST_QQ,
+      </if>
+      <if test="stEmail != null" >
+        ST_EMAIL,
+      </if>
+      <if test="stImgph != null" >
+        ST_IMGPH,
+      </if>
+      <if test="nmJoblh != null" >
+        NM_JOBLH,
+      </if>
+      <if test="dtCreate != null" >
+        DT_CREATE,
+      </if>
+      <if test="dtLg != null" >
+        DT_LG,
+      </if>
+      <if test="dtBklg != null" >
+        DT_BKLG,
+      </if>
+      <if test="nmOd != null" >
+        NM_OD,
+      </if>
+      <if test="stPcip != null" >
+        ST_PCIP,
+      </if>
+      <if test="stAreaid != null" >
+        ST_AREAID,
+      </if>
+      <if test="stUlvl != null" >
+        ST_ULVL,
+      </if>
+      <if test="stStatus != null" >
+        ST_STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cdUs != null" >
+        #{cdUs,jdbcType=VARCHAR},
+      </if>
+      <if test="cdDp != null" >
+        #{cdDp,jdbcType=VARCHAR},
+      </if>
+      <if test="cdDt != null" >
+        #{cdDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stLgnm != null" >
+        #{stLgnm,jdbcType=VARCHAR},
+      </if>
+      <if test="stLgps != null" >
+        #{stLgps,jdbcType=VARCHAR},
+      </if>
+      <if test="stNm != null" >
+        #{stNm,jdbcType=VARCHAR},
+      </if>
+      <if test="nmAge != null" >
+        #{nmAge,jdbcType=DECIMAL},
+      </if>
+      <if test="dtBir != null" >
+        #{dtBir,jdbcType=DATE},
+      </if>
+      <if test="stHtel != null" >
+        #{stHtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stOtel != null" >
+        #{stOtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stAtel != null" >
+        #{stAtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stMtel != null" >
+        #{stMtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stMsn != null" >
+        #{stMsn,jdbcType=VARCHAR},
+      </if>
+      <if test="stQq != null" >
+        #{stQq,jdbcType=VARCHAR},
+      </if>
+      <if test="stEmail != null" >
+        #{stEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="stImgph != null" >
+        #{stImgph,jdbcType=VARCHAR},
+      </if>
+      <if test="nmJoblh != null" >
+        #{nmJoblh,jdbcType=DECIMAL},
+      </if>
+      <if test="dtCreate != null" >
+        #{dtCreate,jdbcType=DATE},
+      </if>
+      <if test="dtLg != null" >
+        #{dtLg,jdbcType=DATE},
+      </if>
+      <if test="dtBklg != null" >
+        #{dtBklg,jdbcType=DATE},
+      </if>
+      <if test="nmOd != null" >
+        #{nmOd,jdbcType=DECIMAL},
+      </if>
+      <if test="stPcip != null" >
+        #{stPcip,jdbcType=VARCHAR},
+      </if>
+      <if test="stAreaid != null" >
+        #{stAreaid,jdbcType=VARCHAR},
+      </if>
+      <if test="stUlvl != null" >
+        #{stUlvl,jdbcType=VARCHAR},
+      </if>
+      <if test="stStatus != null" >
+        #{stStatus,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByExampleSelective" parameterType="map" >
+    update WT_SYS_USER
+    <set >
+      <if test="record.cdUs != null" >
+        CD_US = #{record.cdUs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdDp != null" >
+        CD_DP = #{record.cdDp,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cdDt != null" >
+        CD_DT = #{record.cdDt,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stLgnm != null" >
+        ST_LGNM = #{record.stLgnm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stLgps != null" >
+        ST_LGPS = #{record.stLgps,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stNm != null" >
+        ST_NM = #{record.stNm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nmAge != null" >
+        NM_AGE = #{record.nmAge,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dtBir != null" >
+        DT_BIR = #{record.dtBir,jdbcType=DATE},
+      </if>
+      <if test="record.stHtel != null" >
+        ST_HTEL = #{record.stHtel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stOtel != null" >
+        ST_OTEL = #{record.stOtel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stAtel != null" >
+        ST_ATEL = #{record.stAtel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stMtel != null" >
+        ST_MTEL = #{record.stMtel,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stMsn != null" >
+        ST_MSN = #{record.stMsn,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stQq != null" >
+        ST_QQ = #{record.stQq,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stEmail != null" >
+        ST_EMAIL = #{record.stEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stImgph != null" >
+        ST_IMGPH = #{record.stImgph,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nmJoblh != null" >
+        NM_JOBLH = #{record.nmJoblh,jdbcType=DECIMAL},
+      </if>
+      <if test="record.dtCreate != null" >
+        DT_CREATE = #{record.dtCreate,jdbcType=DATE},
+      </if>
+      <if test="record.dtLg != null" >
+        DT_LG = #{record.dtLg,jdbcType=DATE},
+      </if>
+      <if test="record.dtBklg != null" >
+        DT_BKLG = #{record.dtBklg,jdbcType=DATE},
+      </if>
+      <if test="record.nmOd != null" >
+        NM_OD = #{record.nmOd,jdbcType=DECIMAL},
+      </if>
+      <if test="record.stPcip != null" >
+        ST_PCIP = #{record.stPcip,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stAreaid != null" >
+        ST_AREAID = #{record.stAreaid,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stUlvl != null" >
+        ST_ULVL = #{record.stUlvl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stStatus != null" >
+        ST_STATUS = #{record.stStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update WT_SYS_USER
+    set CD_US = #{record.cdUs,jdbcType=VARCHAR},
+      CD_DP = #{record.cdDp,jdbcType=VARCHAR},
+      CD_DT = #{record.cdDt,jdbcType=VARCHAR},
+      ST_LGNM = #{record.stLgnm,jdbcType=VARCHAR},
+      ST_LGPS = #{record.stLgps,jdbcType=VARCHAR},
+      ST_NM = #{record.stNm,jdbcType=VARCHAR},
+      NM_AGE = #{record.nmAge,jdbcType=DECIMAL},
+      DT_BIR = #{record.dtBir,jdbcType=DATE},
+      ST_HTEL = #{record.stHtel,jdbcType=VARCHAR},
+      ST_OTEL = #{record.stOtel,jdbcType=VARCHAR},
+      ST_ATEL = #{record.stAtel,jdbcType=VARCHAR},
+      ST_MTEL = #{record.stMtel,jdbcType=VARCHAR},
+      ST_MSN = #{record.stMsn,jdbcType=VARCHAR},
+      ST_QQ = #{record.stQq,jdbcType=VARCHAR},
+      ST_EMAIL = #{record.stEmail,jdbcType=VARCHAR},
+      ST_IMGPH = #{record.stImgph,jdbcType=VARCHAR},
+      NM_JOBLH = #{record.nmJoblh,jdbcType=DECIMAL},
+      DT_CREATE = #{record.dtCreate,jdbcType=DATE},
+      DT_LG = #{record.dtLg,jdbcType=DATE},
+      DT_BKLG = #{record.dtBklg,jdbcType=DATE},
+      NM_OD = #{record.nmOd,jdbcType=DECIMAL},
+      ST_PCIP = #{record.stPcip,jdbcType=VARCHAR},
+      ST_AREAID = #{record.stAreaid,jdbcType=VARCHAR},
+      ST_ULVL = #{record.stUlvl,jdbcType=VARCHAR},
+      ST_STATUS = #{record.stStatus,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  
+   <update id="updateByUsercdUs" parameterType="cn.com.wavenet.hydro.pojo.Users" >
+       update WT_SYS_USER
+       set 
+       ST_STATUS = '0' 
+       where CD_US = #{cdUs,jdbcType=VARCHAR}
+   </update>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.wavenet.hydro.pojo.Users" >
+    update WT_SYS_USER
+    <set >
+      <if test="cdDp != null" >
+        CD_DP = #{cdDp,jdbcType=VARCHAR},
+      </if>
+      <if test="cdDt != null" >
+        CD_DT = #{cdDt,jdbcType=VARCHAR},
+      </if>
+      <if test="stLgnm != null" >
+        ST_LGNM = #{stLgnm,jdbcType=VARCHAR},
+      </if>
+      <if test="stLgps != null" >
+        ST_LGPS = #{stLgps,jdbcType=VARCHAR},
+      </if>
+      <if test="stNm != null" >
+        ST_NM = #{stNm,jdbcType=VARCHAR},
+      </if>
+      <if test="nmAge != null" >
+        NM_AGE = #{nmAge,jdbcType=DECIMAL},
+      </if>
+      <if test="dtBir != null" >
+        DT_BIR = #{dtBir,jdbcType=DATE},
+      </if>
+      <if test="stHtel != null" >
+        ST_HTEL = #{stHtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stOtel != null" >
+        ST_OTEL = #{stOtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stAtel != null" >
+        ST_ATEL = #{stAtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stMtel != null" >
+        ST_MTEL = #{stMtel,jdbcType=VARCHAR},
+      </if>
+      <if test="stMsn != null" >
+        ST_MSN = #{stMsn,jdbcType=VARCHAR},
+      </if>
+      <if test="stQq != null" >
+        ST_QQ = #{stQq,jdbcType=VARCHAR},
+      </if>
+      <if test="stEmail != null" >
+        ST_EMAIL = #{stEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="stImgph != null" >
+        ST_IMGPH = #{stImgph,jdbcType=VARCHAR},
+      </if>
+      <if test="nmJoblh != null" >
+        NM_JOBLH = #{nmJoblh,jdbcType=DECIMAL},
+      </if>
+      <if test="dtCreate != null" >
+        DT_CREATE = #{dtCreate,jdbcType=DATE},
+      </if>
+      <if test="dtLg != null" >
+        DT_LG = #{dtLg,jdbcType=DATE},
+      </if>
+      <if test="dtBklg != null" >
+        DT_BKLG = #{dtBklg,jdbcType=DATE},
+      </if>
+      <if test="nmOd != null" >
+        NM_OD = #{nmOd,jdbcType=DECIMAL},
+      </if>
+      <if test="stPcip != null" >
+        ST_PCIP = #{stPcip,jdbcType=VARCHAR},
+      </if>
+      <if test="stAreaid != null" >
+        ST_AREAID = #{stAreaid,jdbcType=VARCHAR},
+      </if>
+      <if test="stUlvl != null" >
+        ST_ULVL = #{stUlvl,jdbcType=VARCHAR},
+      </if>
+      <if test="stStatus != null" >
+        ST_STATUS = #{stStatus,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CD_US = #{cdUs,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.wavenet.hydro.pojo.Users" >
+    update WT_SYS_USER
+    set CD_DP = #{cdDp,jdbcType=VARCHAR},
+      CD_DT = #{cdDt,jdbcType=VARCHAR},
+      ST_LGNM = #{stLgnm,jdbcType=VARCHAR},
+      ST_LGPS = #{stLgps,jdbcType=VARCHAR},
+      ST_NM = #{stNm,jdbcType=VARCHAR},
+      NM_AGE = #{nmAge,jdbcType=DECIMAL},
+      DT_BIR = #{dtBir,jdbcType=DATE},
+      ST_HTEL = #{stHtel,jdbcType=VARCHAR},
+      ST_OTEL = #{stOtel,jdbcType=VARCHAR},
+      ST_ATEL = #{stAtel,jdbcType=VARCHAR},
+      ST_MTEL = #{stMtel,jdbcType=VARCHAR},
+      ST_MSN = #{stMsn,jdbcType=VARCHAR},
+      ST_QQ = #{stQq,jdbcType=VARCHAR},
+      ST_EMAIL = #{stEmail,jdbcType=VARCHAR},
+      ST_IMGPH = #{stImgph,jdbcType=VARCHAR},
+      NM_JOBLH = #{nmJoblh,jdbcType=DECIMAL},
+      DT_CREATE = #{dtCreate,jdbcType=DATE},
+      DT_LG = #{dtLg,jdbcType=DATE},
+      DT_BKLG = #{dtBklg,jdbcType=DATE},
+      NM_OD = #{nmOd,jdbcType=DECIMAL},
+      ST_PCIP = #{stPcip,jdbcType=VARCHAR},
+      ST_AREAID = #{stAreaid,jdbcType=VARCHAR},
+      ST_ULVL = #{stUlvl,jdbcType=VARCHAR},
+      ST_STATUS = #{stStatus,jdbcType=VARCHAR}
+    where CD_US = #{cdUs,jdbcType=VARCHAR}
+  </update>
+  <select id="selectPage" resultMap="BaseResultMap" parameterType="map">
+  		select 
+    <include refid="Base_Column_List" />
+    from WT_SYS_USER where ST_STATUS = '1'
+  	</select>
+</mapper>

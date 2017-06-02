@@ -1,0 +1,110 @@
+@charset "utf-8";
+@import "../common.css";
+.container-fluid{
+    margin: 0;
+    /* padding: 5px; */
+}
+.yearbook-require-box{
+    width: 100%;
+    max-width: 100%;
+    min-height: 0.01%;
+    background: #ffffff;
+    border:2px #D35400 solid;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    padding:10px;
+}
+.yearbook-require-box .form-group-sm{
+    text-align: center;
+}
+.yearbook-require-query,.yearbook-header-box,.yearbook-context-table{
+    margin: auto;
+    max-width:950px;
+}
+.yearbook-header-box{
+    padding-top: 10px;
+    font-size: 12px;
+}
+.yearbook-header-title{
+    text-align: center;
+    font-size: 15px;
+    margin: 5px;
+}
+.yearbook-header-table{
+    margin:0;
+    padding:0;
+    border: 0;
+    text-align: left;
+}
+.yearbook-panel-body{
+    padding-top:0;
+}
+.yearbook-context-table{
+    border: 1px solid darkblue;
+    font-size: 12px;
+}
+.yearbook-context-table thead tr th,.yearbook-context-table tfoot tr td{
+    text-align: center;
+    border: 1px solid darkblue;
+}
+.yearbook-context-table tbody tr td{
+    text-align: right;
+    padding:4px;
+    border:none;
+    border-left: 1px solid darkblue;
+
+}
+.yearbook-context-table tbody tr td:first-child,.yearbook-context-table tfoot tr td:first-child{
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.normal-require-box{
+    margin: 0 auto 5px 0;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0.01%;
+    background: #ffffff;
+    border:1px #069DD5 solid;
+    border-radius: 5px;
+}
+.normal-require-box .row{
+    margin:5px auto;
+}
+.normal-header-table{
+    text-align: center;
+    font-size: 15px;
+    margin: 5px;
+}
+.normal-header-small{
+    text-align: right;
+    font-size: 12px;
+    margin-right: 30px;
+}
+.normal-table tbody tr td,.normal-table thead tr th{
+    text-align: center;
+}
+.normal-table,.normal-table thead tr th,.normal-table tfoot tr td,.normal-table tbody tr td{
+    border: 1px solid #069DD5;
+}
+.normal-table tbody tr td:first-child,.normal-table tfoot tr td:first-child{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.pagination-box{
+    width: auto;
+}
+.pagination-box-count{
+    line-height: 32px;
+    padding-left: 30px;
+}
+.pagination-box-right{
+    text-align: right;
+}
+.pagination{
+    text-align: right;
+    margin: 0;
+}
+

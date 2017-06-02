@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+  xmlns:beans="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+	<global-method-security pre-post-annotations="enabled" /> 
+	<beans:bean id="loggerListener" class="org.springframework.security.authentication.event.LoggerListener" />
+	<!-- 该路径下的资源不用过滤 --> 
+	<http pattern="/login" security="none"/>
+	<http pattern="/services" security="none"/>
+	<http pattern="/static/**" security="none"/>
+	<http pattern="/common/**" security="none"/>
+	<http pattern="/img/**" security="none"/>
+	<http pattern="/css/**" security="none"/>
+	<http pattern="/js/**" security="none"/>
+	
+	<http access-denied-page="/login/403" use-expressions="true">
+		<logout invalidate-session="true" logout-success-url = "/login/out"/>
+		<form-login login-page="/login" authentication-failure-url="/login" default-target-url="/home"/>
+		<!-- 增加一个filter，这点与Acegi是不一样的，不能修改默认的filter了，这个filter位于FILTER_SECURITY_INTERCEPTOR之前 -->
+        <custom-filter before="FILTER_SECURITY_INTERCEPTOR" ref="urlSecurityFilter"/>
+        <!-- 防止同一用户多次登录，使第二次登录失败  -->
+	    <session-management session-fixation-protection="none" invalid-session-url="/login">
+			<concurrency-control max-sessions="3"/> 	
+		</session-management>
+	</http>
+
+	<!-- 一个自定义的filter，必须包含authenticationManager,accessDecisionManager,securityMetadataSource三个属性，
+    	我们的所有控制将在这三个类中实现，解释详见具体配置 -->
+    <beans:bean id="urlSecurityFilter" class="cn.com.wavenet.security.filter.WavenetSecurityFilter">
+        <!-- 用户拥有的权限 --> 
+        <beans:property name="authenticationManager" ref="wavenetAuthenticationManager" />
+        <!-- 用户是否拥有所请求资源的权限 -->  
+        <beans:property name="accessDecisionManager" ref="wavenetAccessDecisionManager" />
+         <!-- 资源与权限对应关系 --> 
+        <beans:property name="securityMetadataSource" ref="wavenetSecurityMetadataSource" />
+    </beans:bean>
+    
+	<!-- 认证管理器，实现用户认证的入口，主要实现UserDetailsService接口即可 加盐-->
+   <authentication-manager alias="wavenetAuthenticationManager">  
+        <authentication-provider user-service-ref="userDetailServiceImpl">
+        	<password-encoder hash="md5">
+        		<salt-source user-property="username"/>
+        	</password-encoder>
+        </authentication-provider>  
+    </authentication-manager>
+    <!-- 访问决策管理器-->  
+    <beans:bean id="wavenetAccessDecisionManager" class="cn.com.wavenet.security.filter.WavenetAccessDecisionManager"/>  
+    <!-- 资源访问 -->
+    <beans:bean id="wavenetSecurityMetadataSource" class="cn.com.wavenet.security.filter.WavenetSecurityMetadataSource">  
+    	<beans:constructor-arg name="wavenetResourceServiceImpl" ref="wavenetResourceServiceImpl"></beans:constructor-arg>  
+    </beans:bean>
+    <beans:bean id="userDetailServiceImpl" class="cn.com.wavenet.security.service.UserDetailServiceImpl"/>
+    <!-- 登录message -->
+    <beans:bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+    	<beans:property name="basename" value="classpath:messages_zh_CN" />
+	</beans:bean>
+    
+</beans:beans>

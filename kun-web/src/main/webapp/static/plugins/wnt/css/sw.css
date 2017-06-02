@@ -1,0 +1,60 @@
+@charset "utf-8";
+@font-face {
+  font-family:'wavenet_sw';
+  src: url('../fonts/wavenet_sw.woff') format('woff'),
+	   url('../fonts/wavenet_sw.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.sw{
+  display: inline-block;
+  font: normal normal normal 20px/1 wavenet_sw;
+  font-size: 20px;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 12px;
+  text-align: center;
+}
+
+/*水务信息图式*/
+.sw-hl:before { content: "\e0001"; }         .sw-hp:before { content: "\e0002"}
+.sw-tt:before { content: "\e0003"}           .sw-shd:before { content: "\e0004"}
+.sw-shlkzp:before { content: "\e0005"}       .sw-wq:before { content: "\e0006"}
+.sw-gq:before { content: "\e0007"}           .sw-sk:before { content: "\e0008"}
+.sw-slsn:before { content: "\e0009"}         .sw-jzz:before { content: "\e0010"}
+.sw-tz:before { content: "\e0011"}           .sw-bz:before { content: "\e0012"}
+.sw-ggbz:before { content: "\e0013"}         .sw-plbz:before { content: "\e0014"}
+.sw-gplybz:before { content: "\e0015"}       .sw-qsbz:before { content: "\e0016"}
+.sw-skbz:before { content: "\e0017"}         .sw-ysbz:before { content: "\e0018"}
+.sw-zybz:before { content: "\e0019"}         .sw-ysbz:before { content: "\e0020"}
+.sw-wsbz:before { content: "\e0021"}         .sw-hlbz:before { content: "\e0022"}
+.sw-dd:before { content: "\e0023"}           .sw-db:before { content: "\e0024"}
+.sw-sb:before { content: "\e0025"}           .sw-hk:before { content: "\e0026"}
+.sw-fxqqt:before { content: "\e0027"}        .sw-fxtd:before { content: "\e0028"}
+.sw-cdjzw:before { content: "\e0029"}        .sw-khgc:before { content: "\e0030"}
+.sw-lcz:before { content: "\e0031"}          .sw-swjc:before { content: "\e0032"}
+.sw-swz:before { content: "\e0033"}          .sw-ylz:before { content: "\e0034"}
+.sw-szjcd:before { content: "\e0035"}        .sw-dzjcs:before { content: "\e0036"}
+.sw-hddmjcd:before { content: "\e0037"}      .sw-zlsc:before { content: "\e0038"}
+.sw-skbz:before { content: "\e0039"}         .sw-st:before { content: "\e0040"}
+.sw-gsgd:before { content: "\e0041"}         .sw-ysgd:before { content: "\e0042"}
+.sw-wsgd:before { content: "\e0043"}         .sw-hlgd:before { content: "\e0044"}
+.sw-ccgd:before { content: "\e0045"}         .sw-ysqd:before { content: "\e0046"} 
+.sw-stdd:before { content: "\e0047"}         .sw-mtdd:before { content: "\e0048"}
+.sw-flbgd:before { content: "\e0049"}        .sw-bjd:before { content: "\e0050"}
+.sw-lsxfs:before { content: "\e0051"}        .sw-dxxfs:before { content: "\e0052"}
+.sw-fm:before { content: "\e0053"}           .sw-lsfm:before { content: "\e0054"}
+.sw-wsfm:before { content: "\e0055"}         .sw-zhf:before { content: "\e0056"}
+.sw-df:before { content: "\e0057"}           .sw-jsf:before { content: "\e0058"}
+.sw-qf:before { content: "\e0039"}           .sw-cld:before { content: "\e0060"}
+.sw-cyd:before { content: "\e0061"}          .sw-szcyd:before { content: "\e0062"}
+.sw-llt:before { content: "\e0063"}          .sw-sj:before { content: "\e0064"}
+.sw-yhsb:before { content: "\e0065"}         .sw-fwzz:before { content: "\e0066"} 
+.sw-psxt:before { content: "\e0067"}         .sw-wsclc:before { content: "\e0068"}
+.sw-wsclfw:before { content: "\e0069"}       .sw-wnclc:before { content: "\e0070"}
+.sw-ysk:before { content: "\e0071"}          .sw-jcj:before { content: "\e0072"}
+.sw-zfj:before { content: "\e0073"}          .sw-tqj:before { content: "\e0074"}
+.sw-ylj:before { content: "\e0075"}          .sw-jlj:before { content: "\e0076"}
+.sw-tsgnj:before { content: "\e0077"}        .sw-psh:before { content: "\e0078"}
+.sw-pfk:before { content: "\e0079"}

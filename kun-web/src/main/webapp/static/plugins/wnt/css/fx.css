@@ -1,0 +1,56 @@
+@charset "utf-8";
+@font-face {
+  font-family:'wavenet_fx';
+  src: url('../fonts/wavenet_fx.woff') format('woff'),
+	   url('../fonts/wavenet_fx.ttf') format('truetype');
+}
+.fx{
+  position: relative;
+  top: 1px;
+  color:#000000;
+  display: inline-block;
+  font-family:'wavenet_fx';
+  font-size:20px;
+  font-style: normal;
+  font-weight:bold;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+/*防汛抗旱图式*/
+.fx-dxsk:before { content:"\f0001"}           .fx-zxsk:before { content: "\f0002"}
+.fx-xxsk:before { content:"\f0003"}           .fx-yjdf:before { content: "\f0004"}
+.fx-ejdf:before { content:"\f0005"}         .fx-qtdf:before { content: "\f0006"}
+.fx-csfhq:before { content: "\f0007"}        .fx-hd:before { content: "\f0008"}
+.fx-swenz:before { content: "\f0009"}         
+.fx-sweiz:before { content: "\f0010"}
+.fx-ylz:before { content: "\f0011"}           .fx-cwz:before { content: "\f0012"}
+.fx-dxgcj:before { content: "\f0013"}         .fx-sqjcz:before { content: "\f0014"}
+.fx-szjcz:before { content: "\f0015"}       .fx-xuhq:before { content: "\f0016"}
+.fx-xinghq:before { content: "\f0017"}         .fx-wd:before { content: "\f0018"}
+.fx-jksm:before { content: "\f0019"}         .fx-jtkm:before { content: "\f0020"}
+.fx-bsl:before { content: "\f0021"}         .fx-bst:before { content: "\f0022"}
+.fx-aqq:before { content: "\f0023"}           .fx-dxsz_1:before { content: "\f0024"}
+.fx-dxsz_2:before { content: "\f0025"}           .fx-zxsz:before { content: "\f0026"}
+.fx-hz:before { content: "\f0027"}        .fx-bz:before { content: "\f0028"}
+.fx-db:before { content: "\f0029"}        .fx-dhx:before { content: "\f0030"}
+.fx-zhx:before { content: "\f0031"}          .fx-lx:before { content: "\f0032"}
+.fx-dxsdz:before { content: "\f0033"}          .fx-zxsdz:before { content: "\f0034"}
+.fx-xxsdz:before { content: "\f0035"} 
+.fx-gq:before { content: "\f0036"}     
+.fx-dxdslx:before { content: "\f0037"}
+.fx-dsdslx:before { content: "\f0038"}          .fx-sc:before { content: "\f0039"}
+.fx-jdj:before { content: "\f0040"}         .fx-xsc:before { content: "\f0041"}
+.fx-tb:before { content: "\f0042"}         .fx-txjz:before { content: "\f0043"}
+.fx-wsjsz:before { content: "\f0044"}         .fx-spjkd:before { content: "\f0045"}
+.fx-yjss:before { content: "\f0046"} 
+.fx-shzhd:before { content: "\f0047"}
+.fx-ylbjz:before { content: "\f0048"}          .fx-shwxq:before { content: "\f0049"}
+.fx-tf:before { content: "\f0050"} 
+.fx-24jjx:before { content: "\f0051"}
+.fx-48jjx:before { content: "\f0052"}     
+.fx-bs:before { content: "\f0053"}
+.fx-fxzhb:before { content: "\f0054"}          .fx-fxyjdw:before { content: "\f0055"}
+.fx-fxwz:before { content: "\f0056"}         .fx-fxsl:before { content: "\f0057"}
+.fx-zylx:before { content: "\f0058"}         .fx-ztazd:before { content: "\f0059"}
+.fx-jjjhz:before { content: "\f0060"}         .fx-ylq:before { content: "\f0061"}

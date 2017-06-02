@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.com.wavenet.hydro.dao.RoleDao" >
+  <resultMap id="BaseResultMap" type="cn.com.wavenet.hydro.pojo.Role" >
+    <id column="CD_RL" property="cdRl" jdbcType="VARCHAR" />
+    <result column="ST_NM" property="stNm" jdbcType="VARCHAR" />
+    <result column="ST_DES" property="stDes" jdbcType="VARCHAR" />
+    <result column="NM_OD" property="nmOd" jdbcType="DECIMAL" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CD_RL, ST_NM, ST_DES, NM_OD
+  </sql>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from WT_SYS_ROLE
+    where CD_RL = #{cdRl,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from WT_SYS_ROLE
+    where CD_RL = #{cdRl,jdbcType=VARCHAR}
+  </delete>
+ 
+  <insert id="insert" parameterType="cn.com.wavenet.hydro.pojo.Role" >
+    insert into WT_SYS_ROLE (CD_RL, ST_NM, ST_DES, 
+      NM_OD)
+    values (#{cdRl,jdbcType=VARCHAR}, #{stNm,jdbcType=VARCHAR}, #{stDes,jdbcType=VARCHAR}, 
+      #{nmOd,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.com.wavenet.hydro.pojo.Role" >
+    insert into WT_SYS_ROLE
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cdRl != null" >
+        CD_RL,
+      </if>
+      <if test="stNm != null" >
+        ST_NM,
+      </if>
+      <if test="stDes != null" >
+        ST_DES,
+      </if>
+      <if test="nmOd != null" >
+        NM_OD,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cdRl != null" >
+        #{cdRl,jdbcType=VARCHAR},
+      </if>
+      <if test="stNm != null" >
+        #{stNm,jdbcType=VARCHAR},
+      </if>
+      <if test="stDes != null" >
+        #{stDes,jdbcType=VARCHAR},
+      </if>
+      <if test="nmOd != null" >
+        #{nmOd,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByExampleSelective" parameterType="map" >
+    update WT_SYS_ROLE
+    <set >
+      <if test="record.cdRl != null" >
+        CD_RL = #{record.cdRl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stNm != null" >
+        ST_NM = #{record.stNm,jdbcType=VARCHAR},
+      </if>
+      <if test="record.stDes != null" >
+        ST_DES = #{record.stDes,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nmOd != null" >
+        NM_OD = #{record.nmOd,jdbcType=DECIMAL},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update WT_SYS_ROLE
+    set CD_RL = #{record.cdRl,jdbcType=VARCHAR},
+      ST_NM = #{record.stNm,jdbcType=VARCHAR},
+      ST_DES = #{record.stDes,jdbcType=VARCHAR},
+      NM_OD = #{record.nmOd,jdbcType=DECIMAL}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.com.wavenet.hydro.pojo.Role" >
+    update WT_SYS_ROLE
+    <set >
+      <if test="stNm != null" >
+        ST_NM = #{stNm,jdbcType=VARCHAR},
+      </if>
+      <if test="stDes != null" >
+        ST_DES = #{stDes,jdbcType=VARCHAR},
+      </if>
+      <if test="nmOd != null" >
+        NM_OD = #{nmOd,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where CD_RL = #{cdRl,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.com.wavenet.hydro.pojo.Role" >
+    update WT_SYS_ROLE
+    set ST_NM = #{stNm,jdbcType=VARCHAR},
+      ST_DES = #{stDes,jdbcType=VARCHAR},
+      NM_OD = #{nmOd,jdbcType=DECIMAL}
+    where CD_RL = #{cdRl,jdbcType=VARCHAR}
+  </update>
+  <select id="selectPage" resultMap="BaseResultMap" parameterType="map">
+  		select 
+    <include refid="Base_Column_List" />
+    from WT_SYS_ROLE where 1=1 
+    <if test="stNm != null and stNm!=''" >
+        and ST_NM = #{stNm,jdbcType=VARCHAR}
+      </if>
+      <if test="cdRl != null and cdRl!=''" >
+        and CD_RL like '%${cdRl}%'
+      </if>
+  	</select>
+</mapper>

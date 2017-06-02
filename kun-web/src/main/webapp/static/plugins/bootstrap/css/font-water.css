@@ -1,0 +1,41 @@
+@charset "utf-8";
+@font-face {
+  font-family:'wavenet';
+  src: url('../fonts/water_Bold.eot');
+  src: url('../fonts/water_Bold.eot?#iefix') format('embedded-opentype'),
+	   url('../fonts/water_Bold.woff') format('woff'),
+	   url('../fonts/water_Bold.ttf') format('truetype');
+}
+
+.swszyicon {	
+  position: relative;
+  top: 1px;
+  display: inline-block;
+  font-family: 'wavenet';
+  font-size:16px;
+  font-style:normal;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/*水文水资源*/
+.swszyicon-sdzlll:before { content: "\a0001";}
+.swszyicon-zrpjll:before { content: "\a0002";}
+.swszyicon-zrpjsw:before { content: "\a0003";}
+.swszyicon-gsswzl:before { content: "\a0004";}
+.swszyicon-zcgdcw:before { content: "\a0005";}
+.swszyicon-cwyntj:before { content: "\a0006";}
+.swszyicon-scllcg:before { content: "\a0007";}
+.swszyicon-scddmcg:before { content: "\a0008";}
+.swszyicon-yzlllcg:before { content: "\a0009";}
+.swszyicon-hsswyszl:before { content: "\a0010";}
+.swszyicon-skswyszl:before { content: "\a0011";}
+.swszyicon-zrpjxyzssl:before { content: "\a0012";}
+.swszyicon-zrpjhsl:before { content: "\a0013";}
+.swszyicon-zrswb:before { content: "\a0014";}
+.swszyicon-zrjslb:before { content: "\a0015";}
+.swszyicon-zdjslb:before { content: "\a0016";}
+.swszyicon-jslzlb:before { content: "\a0017";}
+.swszyicon-lssmzfc:before { content: "\a0018";}
+.swszyicon-zrsmzfl:before { content: "\a0019";}
