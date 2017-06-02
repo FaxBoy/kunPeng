@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+         
+<mapper namespace="cn.com.wavenet.hydro.databaseOpt.mapper.base.BasicMapper">
+    <!-- 根据单一条件查询 -->
+  	<select id="select" resultType="java.util.Map" parameterType="java.util.Map">
+  	           SELECT * FROM ${tablename} WHERE ${k} IN '${params[k]}'
+    </select>
+    <!-- 根据单一条件复杂查询 -->
+  	<select id="find" resultType="java.util.Map" parameterType="java.util.Map">
+  	           SELECT ${columns} FROM ${tablename} 
+  	        WHERE
+  	        <foreach collection="keys" item="k" index="index" open="" separator="and" close="">  	   
+  	            ${k} = '${params[k]}'
+            </foreach>  
+        <if test="columnOrder!=null and columnOrder !=''" >    
+        order by #{columnOrder}
+        </if>
+    </select>
+     <!-- 插入数据到指定表名 --> 
+  	<insert id="insert" parameterType="java.util.Map" >  	
+  	<trim suffix="" suffixOverrides=",">
+        insert into ${tablename}
+        <foreach collection="keys" item="k" index="index" open="(" separator="," close=")">
+            ${k}
+        </foreach>
+        values
+        <foreach collection="keys" item="k" index="index" open="(" separator="," close=")">
+            '${params[k]}'
+        </foreach>
+        </trim>
+    </insert>
+    
+    <update id="update" parameterType = "java.util.Map">
+     update ${tablename} 
+        <set>
+        <foreach collection="keys" item="k" index="index" open="" separator="," close="">
+            ${k}='${params[k]}'
+        </foreach>
+        </set>
+        where
+        <foreach collection="keys2" item="j" index="index" open="" separator="and" close="">
+            ${j}='${params2[j]}'
+        </foreach>
+    </update>
+     <!-- 调用计算堤防里程桩函数-->
+    <select id="F_GETLCZ" parameterType="java.util.Map" statementType="CALLABLE" >
+        {#{return_obj,mode=OUT,jdbcType=VARCHAR} = call pack_gps.F_GETLCZ(#{x,mode=IN,jdbcType=DOUBLE},#{y,mode=IN,jdbcType=DOUBLE})}
+    </select>
+ </mapper>
