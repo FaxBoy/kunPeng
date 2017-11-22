@@ -21,8 +21,8 @@ public class redisTest {
 		Md5PasswordEncoder md5 = new Md5PasswordEncoder();
 		String md5salf = md5.encodePassword("123","shich");
 		System.out.println(md5salf);
-		
-		
+
+		System.out.println(123);
 	}
 	
 }
